@@ -1,0 +1,41 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: #bbbfc2;
+}
+
+.app {
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 30vh;
+  width: 900px;
+}
+
+.app-error {
+  text-align: center;
+  font-size: 2.4rem;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.app-loading{
+  position: absolute;
+  left: 45%;
+  top: 30%;
+}
