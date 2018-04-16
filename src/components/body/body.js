@@ -5,6 +5,7 @@ import tabs from "../../data/body-data";
 import Sidebar from "../sidebar/Sidebar";
 import Paragraphs from "../paragraphs/Paragraphs";
 import NewScan from "../new_scan/NewScan";
+import Scan from "../scan/Scan";
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ export default class Body extends React.Component {
     let screen;
 
     if (d.selectedTab == 'new_scan') screen = <NewScan />
-    else screen = '<h1> something else </h1>';
+    else screen = <Scan d={d} />
 
     return (
       <div className="body">

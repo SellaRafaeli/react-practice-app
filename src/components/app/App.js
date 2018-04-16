@@ -22,10 +22,13 @@ export default class App extends React.Component {
     };
     state.tabs = [{id: 'new_scan', name: 'new_scan'}, {id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}];
     state.screens = [
-      {tech_id: '123', showOverview: false},
-      {tech_id: '123', showOverview: true}
+      {tech_id: '123'},
+      {tech_id: '123'}
     ]
     
+    app.toggleOverview = function() {
+      app.s({showOverview: !app.state.showOverview})
+    } 
     this.state = state;
     window.app = app;
   }
