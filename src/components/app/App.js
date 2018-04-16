@@ -9,7 +9,12 @@ export default class App extends React.Component {
   constructor() {
     super();
 
+    let app = this;
+    app.s = app.setState;
     this.state = {
+      inc: function(){app.setState({num: app.state.num+1})},
+      setTab: (k) => {app.s({selectedTab: k})},
+      num: 1,
       friends: null,
       error: null
     };
@@ -34,7 +39,7 @@ export default class App extends React.Component {
 
   render() {
     const { friends, error } = this.state;
-
+    const data = this.state;
     if (error) {
       return <div className="app-error"> {error} </div>;
     } else if (friends === null) {
@@ -46,7 +51,7 @@ export default class App extends React.Component {
     } else {
       return (
         <div className="app">
-          <Header />
+          <Header d={this.state} />
           <Body friends={friends} />
         </div>
       );
