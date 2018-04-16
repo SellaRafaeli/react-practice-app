@@ -10,36 +10,41 @@ export default class App extends React.Component {
     super();
 
     let app = this;
+    let state = {};
     app.s = app.setState;
-    this.state = {
-      inc: function(){app.setState({num: app.state.num+1})},
+    state = {
+      inc: function(){app.s({num: app.state.num+1})},      
       setTab: (k) => {app.s({selectedTab: k})},
+      selectedTab: 'new_scan',
       num: 1,
       friends: null,
       error: null
     };
+    state.tabs = [{id: 'new_scan', name: 'new_scan'}, {id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}];
+    state.screens = [
+      {tech_id: '123', showOverview: false},
+      {tech_id: '123', showOverview: true}
+    ]
+    
+    this.state = state;
+    window.app = app;
   }
 
   componentDidMount() {
-    let _this = this;
-    FriendsService.getFriendsList()
-      .then(response => {
-        if (response.ok) {
-          response.json().then(data => {
-            _this.setState({ friends: data.friends });
-          });
-        } else {
-          this.setState({
-            error: "Failed to get list of friends"
-          });
-        }
-      })
-      .catch(err => this.setState({ error: err.message }));
   }
 
   render() {
     const { friends, error } = this.state;
-    const data = this.state;
+    const d = this.state;
+
+    return (
+        <div className="app">
+          <Header d={d} />
+          <Body d={d} />
+        </div>
+      );
+
+    
     if (error) {
       return <div className="app-error"> {error} </div>;
     } else if (friends === null) {

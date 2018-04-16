@@ -4,7 +4,7 @@ import Tab from "./tabs/Tab";
 
 const Header = props => {
   let d = props.d;
-  var tabs = ['a','b','c'].map(t => <Tab key={t} tab_id={t} d={d} />);
+  var tabs = d.tabs.map(t => <Tab key={t.id} id={t.id} name={t.name} d={d} />);
     console.log('header props',props)
   return (
     <div className="header">
