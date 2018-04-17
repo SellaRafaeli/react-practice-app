@@ -11,7 +11,9 @@ export default class Body extends React.Component {
   constructor(props) {
     super(props);
     window.body = this;
-    this.state = {}
+
+    //console.log('body props',props)
+    this.state = props;
 
 
     // this.setSelectedTab = this.setSelectedTab.bind(this);
@@ -53,20 +55,33 @@ export default class Body extends React.Component {
   //   return Object.values(refs);
   // }
 
-  render() {
-    console.log('rendering body')
+  render(props) {
+    //console.log('rendering body')
   
     let d = this.props.d;
-    let screen;
+    //console.log('body props',props)
+    let scans = d.scans.map(scan => {
+      return <div key={scan.tech_id}  style={{display: (d.selectedTab==scan.tech_id) ? 'block' : 'none'}}>
+                <Scan d={d} scan={scan} />
+              </div>
+    })
 
-    if (d.selectedTab == 'new_scan') screen = <NewScan />
-    else screen = <Scan d={d} />
+    //console.log('scans',scans)
+    //console.log('body props',props)
+    // if (d.selectedTab == 'new_scan') screen = 
+    // else screen = <Scan d={d} />
 
     return (
       <div className="body">
-        <h1>Body</h1>        
-        {d.selectedTab}
-        {screen}    
+        <h1>Body</h1>                
+        selectedTab: {d.selectedTab}
+        <div style={{display: (d.selectedTab=='new_scan') ? 'block' : 'none'}}>
+          <NewScan d={d} />
+        </div>
+        
+        
+        {scans}
+        
       </div>
     );
   }

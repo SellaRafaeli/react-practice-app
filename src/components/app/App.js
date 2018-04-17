@@ -14,16 +14,18 @@ export default class App extends React.Component {
     app.s = app.setState;
     state = {
       inc: function(){app.s({num: app.state.num+1})},      
-      setTab: (k) => {app.s({selectedTab: k})},
+      setTab: (k) => {
+        app.s({selectedTab: k});
+      },
       selectedTab: 'new_scan',
       num: 1,
       friends: null,
       error: null
     };
-    state.tabs = [{id: 'new_scan', name: 'new_scan'}, {id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}];
-    state.screens = [
-      {tech_id: '123'},
-      {tech_id: '123'}
+    state.tabs = [{tech_id: 'new_scan', name: 'new_scan'}, {tech_id: 'foo', name: 'Foo'}, {tech_id: 'bar', name: 'Bar'}];
+    state.scans = [
+      {tech_id: 'foo'},
+      {tech_id: 'bar'}
     ]
     
     app.toggleOverview = function() {
@@ -37,9 +39,10 @@ export default class App extends React.Component {
   }
 
   render() {
+
     const { friends, error } = this.state;
     const d = this.state;
-
+    //console.log('rendering app. State: ',d)
     return (
         <div className="app">
           <Header d={d} />
