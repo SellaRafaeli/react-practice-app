@@ -8,7 +8,3 @@ Instructions:
 4.  surge (for deployment)
 
 # TODOs
-- show multiple scans, each with own state (results/overview)
-- add scan
-- submit a scan   
-- 

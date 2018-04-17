@@ -28,9 +28,14 @@ export default class App extends React.Component {
       {tech_id: 'bar'}
     ]
     
-    app.toggleOverview = function() {
+    app.toggleOverview = () => {
       app.s({showOverview: !app.state.showOverview})
     } 
+
+    app.submitScan = (name) => {
+      this.setState({tabs: [...this.state.tabs, {tech_id: name, name: name}]})
+      this.setState({scans: [...this.state.scans, {tech_id: name, name: name}]})
+    }
     this.state = state;
     window.app = app;
   }
@@ -49,23 +54,5 @@ export default class App extends React.Component {
           <Body d={d} />
         </div>
       );
-
-    
-    if (error) {
-      return <div className="app-error"> {error} </div>;
-    } else if (friends === null) {
-      return (
-        <div className="app-loading">
-          <MDSpinner size={200} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="app">
-          <Header d={this.state} />
-          <Body friends={friends} />
-        </div>
-      );
-    }
   }
 }
