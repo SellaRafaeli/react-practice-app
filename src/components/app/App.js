@@ -11,43 +11,56 @@ export default class App extends React.Component {
 
     let app = this;
     let state = {};
+    
     app.s = app.setState;
+    
     state = {
-      inc: function(){app.s({num: app.state.num+1})},      
-      setTab: (k) => {
-        app.s({selectedTab: k});
-      },
+      inc: function(){app.s({num: app.state.num+1})},            
       selectedTab: 'new_scan',
-      num: 1,
-      friends: null,
-      error: null
     };
-    state.tabs = [{tech_id: 'new_scan', name: 'new_scan'}, {tech_id: 'foo', name: 'Foo'}, {tech_id: 'bar', name: 'Bar'}];
+
+    state.tabs = [{tech_id: 'foo', name: 'Foo'}, {tech_id: 'bar', name: 'Bar'}];
     state.scans = [
       {tech_id: 'foo'},
       {tech_id: 'bar'}
     ]
-    
-    app.toggleOverview = () => {
-      app.s({showOverview: !app.state.showOverview})
-    } 
+    state.scans = [{tech_id: 'qux', name: 'qux'}];
+    state.tabs  = [];
+    state.tabs.push({tech_id: 'new_scan', name: 'new_scan'})
+
+    app.setTab = (tech_id) => {
+      if (!app.state.tabs.find(t=>t.tech_id==tech_id)) app.addTab(tech_id, tech_id)
+      app.s({selectedTab: tech_id});
+    };
+
+    app.addTab = (tech_id, name) => {
+      var newTabs  = [...app.state.tabs, {tech_id: name, name: name}];
+      console.log(newTabs)
+      this.setState({tabs: newTabs});
+    }
 
     app.submitScan = (name) => {
-      this.setState({tabs: [...this.state.tabs, {tech_id: name, name: name}]})
-      this.setState({scans: [...this.state.scans, {tech_id: name, name: name}]})
+      app.addTab(name, name);
+      var newScans = [...this.state.scans, {tech_id: name, name: name}];
+      this.setState({scans: newScans, selectedTab: name})
     }
+
     this.state = state;
     window.app = app;
   }
 
   componentDidMount() {
+    setTimeout(()=>{
+      app.submitScan('foo');
+      app.submitScan('bar');
+      app.submitScan('baz');
+      app.setTab('new_scan')
+    });
   }
 
   render() {
-
-    const { friends, error } = this.state;
     const d = this.state;
-    //console.log('rendering app. State: ',d)
+    
     return (
         <div className="app">
           <Header d={d} />

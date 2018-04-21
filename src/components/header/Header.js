@@ -9,7 +9,7 @@ const Header = props => {
   return (
     <div className="header">
       <div className="text-area">
-        <p className="first-headline">KYC Header {d.num} {d.selectedTab}</p>
+        <p className="first-headline">Tabs</p>
         {tabs}
       </div>
     </div>

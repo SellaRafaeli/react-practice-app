@@ -21,39 +21,8 @@ export default class Body extends React.Component {
   }
 
   componentWillMount() {
-    // this.setState({
-    //   friends: this.props.friends,
-    //   tabs
-    // });
+   
   }
-
-  // setSelectedTab(id) {
-  //   this.setState(
-  //     {
-  //       selected: id
-  //     },
-  //     () => this.handleScrollToElement(this.state.selected)
-  //   );
-  // }
-
-  // handleScrollToElement(id) {
-  //   const testNode = ReactDOM.findDOMNode(this.state.refs[id]);
-  //   testNode.scrollIntoView({ behavior: "smooth" });
-  // }
-
-  // getRefs(refs) {
-  //   this.setState(
-  //     {
-  //       refs
-  //     },
-  //     () => this.getRefsValue()
-  //   );
-  // }
-
-  // getRefsValue() {
-  //   const { refs } = this.state;
-  //   return Object.values(refs);
-  // }
 
   render(props) {
     //console.log('rendering body')
@@ -73,8 +42,6 @@ export default class Body extends React.Component {
 
     return (
       <div className="body">
-        <h1>Body</h1>                
-        selectedTab: {d.selectedTab}
         <div style={{display: (d.selectedTab=='new_scan') ? 'block' : 'none'}}>
           <NewScan d={d} />
         </div>
