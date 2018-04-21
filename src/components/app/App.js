@@ -49,13 +49,19 @@ export default class App extends React.Component {
     window.app = app;
   }
 
+  componentWillMount() {
+    
+  }
+
   componentDidMount() {
     setTimeout(()=>{
-      app.submitScan('foo');
-      app.submitScan('bar');
-      app.submitScan('baz');
-      app.setTab('new_scan')
-    });
+      let scans = [
+        {name: 'foo', tech_id: 'foo1'},
+        {name: 'bar', tech_id: 'bar2'},
+        {name: 'baz', tech_id: 'baz3'}
+      ]
+      app.setState({scans: scans})
+    },100);
   }
 
   render() {
