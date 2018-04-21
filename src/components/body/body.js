@@ -26,7 +26,8 @@ export default class Body extends React.Component {
   
     let d = this.props.d;
     //console.log('body props',props)
-    let scans = d.scans.map(scan => {
+    var openTabs = d.tabs.filter(t=>t.tech_id!='new_scan')
+    let active_scans = openTabs.map(scan => {
       return <div key={scan.tech_id}  style={{display: (d.selectedTab==scan.tech_id) ? 'block' : 'none'}}>
                 <Scan d={d} scan={scan} />
               </div>
@@ -43,7 +44,7 @@ export default class Body extends React.Component {
           <NewScan d={d} />
         </div>
         
-        {scans}
+        {active_scans}
       </div>
     );
   }

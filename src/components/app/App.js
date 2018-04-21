@@ -34,7 +34,7 @@ export default class App extends React.Component {
 
     app.addTab = (tech_id, name) => {
       var newTabs  = [...app.state.tabs, {tech_id: name, name: name}];
-      console.log(newTabs)
+      //console.log(newTabs)
       this.setState({tabs: newTabs});
     }
 
