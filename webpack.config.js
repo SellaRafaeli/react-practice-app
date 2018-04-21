@@ -48,7 +48,6 @@ const config = {
   plugins: [
     HtmlWebpackPluginConfig,
     new CopyWebpackPlugin([
-      { from: './src/data', to: "data" },
       { from: './.surgeignore', to: ".surgeignore", toType: "file" }
     ])
   ],

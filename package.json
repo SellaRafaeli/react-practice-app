@@ -1,12 +1,10 @@
 {
-  "name": "baby-steps",
-  "version": "1.0.0",
+  "name": "kyc-fe",
+  "version": "0.0.1",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
-  "author": "avishay pelach",
-  "license": "ISC",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

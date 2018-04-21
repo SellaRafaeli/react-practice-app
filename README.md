@@ -28,6 +28,7 @@ Instructions:
 
   - single item 
 
-  
+- NetJS: set config for production server 
+- Set production deployment   
 
 

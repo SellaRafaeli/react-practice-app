@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./body.scss";
-import tabs from "../../data/body-data";
-import Sidebar from "../sidebar/Sidebar";
-import Paragraphs from "../paragraphs/Paragraphs";
 import NewScan from "../new_scan/NewScan";
 import Scan from "../scan/Scan";
 
@@ -46,9 +43,7 @@ export default class Body extends React.Component {
           <NewScan d={d} />
         </div>
         
-        
         {scans}
-        
       </div>
     );
   }

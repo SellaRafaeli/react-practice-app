@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.scss";
-import FriendsService from "../../services/friendsService/friendsService";
-import MDSpinner from "react-md-spinner";
 import Header from "../header/Header";
 import Body from "../body/body";
+import Net from "../../services/net";
 
 export default class App extends React.Component {
   constructor() {
@@ -54,14 +53,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(()=>{
-      let scans = [
-        {name: 'foo', tech_id: 'foo1'},
-        {name: 'bar', tech_id: 'bar2'},
-        {name: 'baz', tech_id: 'baz3'}
-      ]
-      app.setState({scans: scans})
-    },100);
+    $get('/persons', scans => app.setState({scans: scans}))
   }
 
   render() {
